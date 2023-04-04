@@ -1,4 +1,3 @@
-from llm import LLM
 prompt_calculator = """ You can use this calculator to do simple math operations.
 You can use the following operators: +, -, *, /, %, ^.
 You have to inject `calculator(QUERY)` in your completion where QUERY is a single arithmetic operation.
