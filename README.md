@@ -1,6 +1,7 @@
-# Reason-Action (ReAct) prompting implementation
+# Reason-Action (ReAct) prompting implementation 🚧👷‍♂️ Under Construction
 
 Attempt to imitate the cognitive process of connecting a reason to an action using the language model LLM (GPT-3.5 Turbo).
+
 
 ## Citation
 
