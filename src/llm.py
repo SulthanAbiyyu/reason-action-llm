@@ -1,9 +1,9 @@
-from typing import Optional
-from pydantic import BaseModel
-from dotenv import load_dotenv
-
 import os
+from typing import Optional
+
 import openai
+from dotenv import load_dotenv
+from pydantic import BaseModel
 
 
 class BaseLLM(BaseModel):
@@ -26,20 +26,26 @@ class BaseLLM(BaseModel):
 
 
 class LLM(BaseLLM):
-    def run(self, prompt: str):
-        self.prompt = self.template.format(QUERY=prompt)
-        self.response = openai.ChatCompletion.create(
-            model=self.model,
-            messages=[
-                {
-                    "role": "user",
-                    "content": self.prompt,
-                }
-            ],
-            temperature=self.temperature,
-            max_tokens=self.max_tokens,
-            top_p=self.top_p,
-        )
+    def run(self, prompt: str, template: str = None):
 
-    def set_template(self, template):
-        self.template = template
+        if template is not None:
+            self.template = template
+            self.prompt = self.template.format(QUERY=prompt)
+        else:
+            self.prompt = prompt
+            
+        if self.model == "gpt-3.5-turbo":
+            self.response = openai.ChatCompletion.create(
+                model=self.model,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": self.prompt,
+                    }
+                ],
+                temperature=self.temperature,
+                max_tokens=self.max_tokens,
+                top_p=self.top_p,
+            )
+        else:
+            raise NotImplementedError("Model not implemented yet.")
