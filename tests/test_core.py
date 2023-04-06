@@ -1,4 +1,4 @@
-from reason_action import parse
+from reason_action import parse, action_handler
 
 
 def test_parse():
@@ -14,3 +14,8 @@ final_answer: My money is 2000 rupiah left.
     assert action == "My money is calculator(5000 - 3000) rupiah left."
     assert observation == "There is no calculation left, so my answer is final."
     assert final_answer == "My money is 2000 rupiah left."
+
+
+def test_action_handler():
+    action = "My money is calculator(5000 - 3000) rupiah left."
+    assert action_handler(action) == "My money is 2000.0 rupiah left."

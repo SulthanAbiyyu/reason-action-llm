@@ -29,3 +29,7 @@ def calculator(query: str):
         if o in operators:
             return operators[o](calculator(left), calculator(right))
 
+
+tools_list = {
+    "calculator": calculator
+}

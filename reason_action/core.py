@@ -21,3 +21,16 @@ def parse(response: str) -> Tuple[str, str, str, Union[str, None]]:
         final_answer = None
 
     return think, action, observation, final_answer
+
+
+def action_handler(action: str) -> str:
+    for tool in tools_list.keys():
+        if tool in action:
+            api_calls = re.findall(rf"(?<={tool}\().*?(?=\))", action)
+            for api_call in api_calls:
+                result = tools_list[tool](api_call)
+                action = re.sub(rf"{tool}\({api_call}\)", str(result), action)
+
+    return action
+
+
