@@ -1,4 +1,4 @@
-from operator import add, sub, mul, truediv, mod, pow
+from operator import add, sub, mul, truediv
 
 
 def calculator(query: str):
@@ -12,23 +12,18 @@ def calculator(query: str):
     2
     >>> calculator("1-1")
     0
-
-    query should only contains one operation.
     """
-    operation = {
-        "^": pow,
-        "*": mul,
-        "/": truediv,
-        "%": mod,
-        "+": add,
-        "-": sub,
+    operators = {
+        '+': add,
+        '-': sub,
+        '*': mul,
+        '/': truediv
     }
 
-    if query.isdigit():
+    if query.strip().isdigit():
         return float(query)
 
-    for op in operation.keys():
+    for op in operators.keys():
         left, o, right = query.partition(op)
-        print(o)
-        if o in operation:
-            return operation[o](calculator(left), calculator(right))
+        if o in operators:
+            return operators[o](calculator(left), calculator(right))

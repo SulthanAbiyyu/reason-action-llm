@@ -1,6 +1,5 @@
-from src.llm import LLM
-from src.prompts import prompt_calculator
-
+from src import LLM
+from src import prompt_calculator
 
 def test_prompt_calculator():
     llm = LLM()
