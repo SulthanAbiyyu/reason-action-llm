@@ -1,4 +1,4 @@
-from src import calculator
+from reason_action import calculator
 
 def test_calculator():
     assert calculator("1+1") == 2
