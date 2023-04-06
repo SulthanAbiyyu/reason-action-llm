@@ -1,5 +1,6 @@
 from reason_action import calculator
 
+
 def test_calculator():
     assert calculator("1+1") == 2
     assert calculator("1-1") == 0
@@ -7,3 +8,5 @@ def test_calculator():
     assert calculator("10/2") == 5
     assert calculator("1000 - 1000 * 10 / 100") == 900.0
     assert calculator("3 + 5 * 3") == 18.0
+    assert calculator("3 + 5 * 3 / 2") == 10.5
+    assert calculator("16 - 4 ^ 2") == 0.0

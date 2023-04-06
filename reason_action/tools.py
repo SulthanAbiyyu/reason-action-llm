@@ -1,4 +1,4 @@
-from operator import add, sub, mul, truediv
+from operator import add, sub, mul, truediv, pow
 
 
 def calculator(query: str):
@@ -17,7 +17,8 @@ def calculator(query: str):
         '+': add,
         '-': sub,
         '*': mul,
-        '/': truediv
+        '/': truediv,
+        '^': pow
     }
 
     if query.strip().isdigit():
@@ -27,3 +28,4 @@ def calculator(query: str):
         left, o, right = query.partition(op)
         if o in operators:
             return operators[o](calculator(left), calculator(right))
+
