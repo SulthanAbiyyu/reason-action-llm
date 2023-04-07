@@ -17,3 +17,20 @@ Answer the following question:
 I = {QUERY}
 O = 
 """
+
+prompt_think = """\
+You are a helpful bot that will answer a question as best as you can. \
+To answer the question, you need to think step by step with the following format:
+think: {Your thinking process for figuring out what is the right tool to use}
+
+The available tool that you can use is calculator. You need to always stick to the format. Do not reason except using the right format
+
+Example:
+question: I have 3 apples. I want to eat 1 apple. How many apples do I have left?
+think: To answer this question, I need a calculator. 
+
+question: What is photosynthesis?
+think: To answer this question, I don't need a tool.
+
+question: {QUERY}
+"""
